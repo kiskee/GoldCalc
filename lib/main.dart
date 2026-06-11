@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GoldCalc',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 226, 198, 15)),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,

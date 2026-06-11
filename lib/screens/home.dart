@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/result_card.dart';
 import '../widgets/input_form.dart';
 import '../widgets/calculate_button.dart';
+import '../widgets/result_bottom_sheet.dart';
 
 
 class Propin extends StatefulWidget {
@@ -13,8 +13,6 @@ class Propin extends StatefulWidget {
 }
 
 class _PropinState extends State<Propin> {
-  double lotaje = 0.00;
-
   double _calcularLotaje(double stopLoss, double riesgo) {
     if (stopLoss == 0) return 0;
     final lotaje = riesgo / stopLoss;
@@ -23,6 +21,11 @@ class _PropinState extends State<Propin> {
 
   final stopLossController = TextEditingController();
   final riskController = TextEditingController();
+
+  void _clearFields() {
+    stopLossController.clear();
+    riskController.clear();
+  }
 
   @override
   void dispose() {
@@ -39,7 +42,6 @@ class _PropinState extends State<Propin> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ResultCard(lotaje: lotaje),
               InputForm(
                 riskController: riskController,
                 stopLossController: stopLossController,
@@ -49,7 +51,11 @@ class _PropinState extends State<Propin> {
                   final stopLoss =
                       double.tryParse(stopLossController.text) ?? 0;
                   final riesgo = double.tryParse(riskController.text) ?? 0;
-                  setState(() => lotaje = _calcularLotaje(stopLoss, riesgo));
+                  final result = _calcularLotaje(stopLoss, riesgo);
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (_) => ResultBottomSheet(lotaje: result),
+                  ).then((_) => _clearFields());
                 },
               ),
             ],
