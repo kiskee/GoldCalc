@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 
 class ResultCard extends StatelessWidget {
   final double lotaje;
-  final TextStyle styles;
-  const ResultCard({super.key, required this.lotaje, required this.styles});
+  const ResultCard({super.key, required this.lotaje});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    final theme = Theme.of(context);
+    final styles = theme.textTheme.titleMedium!.copyWith(
+      color: theme.colorScheme.onPrimaryContainer,
+      fontWeight: FontWeight.bold,
+    );
+    return Container(
       padding: const EdgeInsets.all(50),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.amber[600],
+        color: theme.colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black, width: 4),
+        border: Border.all(color: theme.colorScheme.outline, width: 4),
       ),
       child: Column(
         children: [
@@ -21,11 +25,10 @@ class ResultCard extends StatelessWidget {
           Text(
             lotaje.toStringAsFixed(2),
             style: styles.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
-              fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
+              fontSize: theme.textTheme.displaySmall?.fontSize,
             ),
           ),
-          Text("Lotes", style: styles.copyWith(color: Colors.black)),
+          Text("Lotes", style: styles),
         ],
       ),
     );

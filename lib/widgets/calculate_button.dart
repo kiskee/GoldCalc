@@ -7,6 +7,7 @@ class CalculateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 40),
       child: Center(
@@ -16,8 +17,8 @@ class CalculateButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.amber[600],
-              foregroundColor: Colors.black,
+              backgroundColor: theme.colorScheme.primary,
+              foregroundColor: theme.colorScheme.onPrimary,
               shape: const CircleBorder(),
               elevation: 6,
             ),

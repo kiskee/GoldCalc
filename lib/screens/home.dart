@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/result_card.dart';
 import '../widgets/input_form.dart';
-import '../widgets/cal_button.dart';
+import '../widgets/calculate_button.dart';
 
 
 class Propin extends StatefulWidget {
@@ -33,18 +33,13 @@ class _PropinState extends State<Propin> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final styles = theme.textTheme.titleMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-      fontWeight: FontWeight.bold,
-    );
     return Scaffold(
       appBar: AppBari(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ResultCard(lotaje: lotaje, styles: styles),
+              ResultCard(lotaje: lotaje),
               InputForm(
                 riskController: riskController,
                 stopLossController: stopLossController,

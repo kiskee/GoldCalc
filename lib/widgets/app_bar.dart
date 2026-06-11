@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
-class AppBari extends StatelessWidget  implements PreferredSizeWidget {
+class AppBari extends StatelessWidget implements PreferredSizeWidget {
   const AppBari({super.key});
 
   @override
@@ -16,7 +17,7 @@ class AppBari extends StatelessWidget  implements PreferredSizeWidget {
           children: [
             Center(
               child: const Text(
-                "Calculadora ORO Rentable",
+                appTitle,
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
             ),
